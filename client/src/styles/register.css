@@ -1,0 +1,41 @@
+html, body, #root {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.auroral-northern, .auroral-stars {
+    z-index: -2;
+}
+
+#reg-wrap {
+    height: 300px;
+    width: 350px;
+    margin: auto;
+    margin-top: 100px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reg-form {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 300px;
+}
+
+#reg-form input, #reg-form button {
+    margin: 7.5px 0;
+}

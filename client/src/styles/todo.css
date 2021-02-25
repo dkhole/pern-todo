@@ -1,0 +1,61 @@
+#wrapper {
+    color: white;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+#main-wrap {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#card-wrap {
+    height: 75%;
+    width:  90%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#todo-wrap {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.todo {
+    height: 70px;
+    min-width: 100px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#todo-main {
+    text-align: center;
+    padding: 5px;
+    height: 35px;
+}
+
+#todo-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 35px;
+}
+
+.todo button {
+    font-size: 10px;
+}
