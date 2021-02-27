@@ -1,9 +1,12 @@
 import {React, Fragment, useState} from 'react';
+import {ReactComponent as Edit} from '../imgs/edit.svg';
 
-const EditCard = ({ cardList, setCardList, card }) => {
+const EditCard = ({ allCards, setAllCards, card }) => {
     const [cardName, setCardName] = useState('');
 
-    const renameCard = async() => {
+    const renameCard = async(e) => {
+        e.stopPropagation();
+
         try {
             const body= {cardName};
             const jsonHead = new Headers();
@@ -17,15 +20,15 @@ const EditCard = ({ cardList, setCardList, card }) => {
             })
 
             //update card list
-            const objIndex = cardList.findIndex(c => c.card_id === card.card_id && c.user_id === card.user_id);
-            const newObj = {...cardList[objIndex], card_name: cardName}
+            const objIndex = allCards.findIndex(c => c.card_id === card.card_id && c.user_id === card.user_id);
+            const newObj = {...allCards[objIndex], card_name: cardName}
             const updatedCards = [
-                ...cardList.slice(0, objIndex),
+                ...allCards.slice(0, objIndex),
                 newObj,
-                ...cardList.slice(objIndex + 1),
-              ];
+                ...allCards.slice(objIndex + 1),
+            ];
             
-            setCardList(updatedCards);
+            setAllCards(updatedCards);
             setCardName('');
         } catch (error) {
             console.error(error.message);
@@ -34,9 +37,7 @@ const EditCard = ({ cardList, setCardList, card }) => {
 
     return (
         <Fragment>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#id${card.card_id}`}>
-            Rename
-            </button>
+            <Edit type="button"  data-toggle="modal" data-target={`#id${card.card_id}`}/>
 
             <div className="modal fade" id={`id${card.card_id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">

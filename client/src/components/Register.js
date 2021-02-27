@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/auroral.css';
 import '../styles/register.css';
 
 const Register = ({ setAuth }) => {

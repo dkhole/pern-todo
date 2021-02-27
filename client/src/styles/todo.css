@@ -1,61 +1,187 @@
-#wrapper {
-    color: white;
-    position: relative;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+@font-face {
+    font-family: 'Rubik';
+    src: local('Rubik'), url(../fonts/Rubik-Bold.woff) format('woff');
 }
 
-#main-wrap {
-    height: 100vh;
+#root {
+    background-color:rgb(245, 245, 245);
+}
+
+#cards-top-wrap {
+    height: 100px;
+    width: 100vw;
+    line-height: 100px;
+    padding-left: 40px;
+    font-weight: 500;
+    font-size: 40px;
+    font-family: Rubik;
+    letter-spacing: -3px;
+    text-transform: capitalize;
+}
+
+#cards-bot-wrap {
+    height: calc(100vh - 200px);
+    width: 100vw;
+    display: grid; 
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    grid-template-rows: repeat(auto-fill, minmax(235px,1fr));
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.card {
+    height: 225px;
+    width: 200px;
+    margin-left: 12px;
+    background-color: #fff;
+    border: none;
+    -webkit-box-shadow: 0px 10px 13px -7px #2e2e2e, 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: 0px 10px 13px -7px #e4e4e4, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.card-title-wrap {
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.title {
+    font-size: 23px;
+    text-transform: capitalize;
+}
+
+.task-num {
+    font-size: 12px;
+    color: rgb(104, 104, 104);
+    letter-spacing: 1px;
+}
+
+
+.button-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.button-wrap svg{
+    height: 45px;
+    width: 25px;
+    cursor: pointer;
+}
+
+#todos-wrap {
+    background-color: rgb(110, 108, 212);
+}
+
+#cards-footer {
+    height: 100px;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
 }
 
-#card-wrap {
-    height: 75%;
-    width:  90%;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    border-radius: 10px;
-    padding: 10px;
+#cards-footer form {
+    margin: 15px;
 }
 
-#todo-wrap {
-    height: 90%;
-    width: 100%;
+#todo-top {
+    height: 230px;
     display: flex;
-    align-content: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-left: 20px;
+    color: white;
+}
+
+#back {
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    height: 20px;
+    width: 20px;
+}
+
+#back svg {
+    fill: white;
+}
+
+#todo-bottom {
+    height: 75vh;
+    padding-top: 50px;
+    border-radius: 30px 30px 0 0;
+    background-color:#fff;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#todo-inp {
+    position: fixed;
+    bottom: 20px;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }
 
 .todo {
-    height: 70px;
-    min-width: 100px;
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    border-radius: 10px;
-    margin: 10px;
+    height: 45px;
+ 
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    
 }
 
-#todo-main {
-    text-align: center;
-    padding: 5px;
-    height: 35px;
+.todo svg {
+    height: 20px;
+    width: 20px;
 }
 
-#todo-footer {
+.todo-prior {
+    width: 30px;
+    padding-left: 12.5px;
+}
+
+.todo-title {
+    width: calc(100vw - 130px);
+    padding-left: 10px;
+}
+
+.todo-title:first-letter {
+    text-transform: uppercase;
+}
+
+.todo-inputs {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    height: 35px;
+    width: 90px;
+    background-color: #fff;
 }
 
-.todo button {
-    font-size: 10px;
+#card-name {
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.prior {
+    height: 12.5px;
+    width: 12.5px;
+    border-radius: 100%;
+}
+
+.prior.low {
+    background-color: rgb(120, 216, 83);
+}
+
+.prior.med {
+    background-color: rgb(231, 180, 69);
+}
+
+.prior.high {
+    background-color: rgb(230, 62, 62);
 }

@@ -1,6 +1,7 @@
 import { React, Fragment, useState } from 'react';
+import {ReactComponent as Edit} from '../imgs/edit.svg';
 
-const EditTodo = ({ mainTodos, setMainTodos, todo }) => {
+const EditTodo = ({ setMainCard, allCards, setAllCards, todo }) => {
     const [title, setTitle] = useState('');
     const [priority, setPriority] = useState(0);
 
@@ -17,7 +18,7 @@ const EditTodo = ({ mainTodos, setMainTodos, todo }) => {
         e.preventDefault()
         try {
             const cardId = todo.card_id;
-            const body= { title, priority, dueDate, cardId };
+            const body = { title, priority, dueDate, cardId };
             const jsonHead = new Headers();
             jsonHead.append('Content-type', 'application/json');
             jsonHead.append('token', localStorage.token);
@@ -28,19 +29,32 @@ const EditTodo = ({ mainTodos, setMainTodos, todo }) => {
                 body: JSON.stringify(body)
             })
 
-            //update todo list
+            //SYNCHRONISE TODO LIST
+
+            //find card index
+            const cardIndex = allCards.findIndex(c => c.card_id === cardId);
             //find todo index
-            const objIndex = mainTodos.findIndex(t => t.todo_id === todo.todo_id);
+            const todoIndex = allCards[cardIndex].todos.findIndex(t => t.todo_id === todo.todo_id);
+
             //create new todo
-            const newObj = {...mainTodos[objIndex], todo_title: title, todo_priority: priority, todo_due: dueDate }
+            const newTodo = { ...allCards[cardIndex].todos[todoIndex], todo_title: title, todo_priority: priority, todo_due: dueDate }
+
+            //create updated todo list
+            const temp = [ ...allCards[cardIndex].todos ];
 
             const updatedTodos = [
-                ...mainTodos.slice(0, objIndex),
-                newObj,
-                ...mainTodos.slice(objIndex + 1),
+                ...temp.slice(0, todoIndex),
+                newTodo,
+                ...temp.slice(todoIndex + 1),
             ];
+
+            //create new card array
+            const newCards = allCards.map( c =>  
+                c.card_id === cardId ? { ...c, todos: updatedTodos } : c
+            );
             
-            setMainTodos(updatedTodos);
+            setMainCard(newCards[cardIndex]);
+            setAllCards(newCards);
             setTitle('');
             setPriority(0);
         } catch (error) {
@@ -50,9 +64,7 @@ const EditTodo = ({ mainTodos, setMainTodos, todo }) => {
 
     return (
         <Fragment>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#id${todo.todo_id}`}>
-                Edit
-            </button>
+            <Edit type="button"  data-toggle="modal" data-target={`#id${todo.todo_id}`}/>
 
             <div className="modal fade" id={`id${todo.todo_id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
