@@ -15,6 +15,8 @@ router.post("/register", validInfo, async(req, res) => {
         if(user.rows.length !== 0) {
             return res.status(401).send("User with that email already exists");
         }
+
+        console.log(user);
     
         //bcrypt password
         const saltRound = 10;
@@ -31,7 +33,7 @@ router.post("/register", validInfo, async(req, res) => {
         res.json({token});
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server register error");
+        res.status(500).send("Server register blaaherror");
     }
 });
 
