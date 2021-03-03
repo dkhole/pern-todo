@@ -33,7 +33,7 @@ router.post("/register", validInfo, async(req, res) => {
         res.json({token});
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server register blaaherror");
+        res.status(500).send(error.message);
     }
 });
 

@@ -37,7 +37,6 @@ const Register = ({ setAuth }) => {
         localStorage.setItem('token', parseRes.token);
         setAuth(true);
     } catch (error) {
-      console.log('hnnnnn');
         console.error(error.message);
     }
 }
