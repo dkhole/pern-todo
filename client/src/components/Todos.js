@@ -15,7 +15,7 @@ const Todos = ({ setAuth }) => {
 
     const fetchData = async() => {
         try {
-            const res = await fetch("http://localhost:5000/todos", {
+            const res = await fetch("/todos", {
                 method: "GET",
                 headers: { token: localStorage.token}
             });
@@ -63,7 +63,7 @@ const Todos = ({ setAuth }) => {
         const body = {cardName};
 
         try {
-            const res = await fetch("http://localhost:5000/todos/card", {
+            const res = await fetch("/todos/card", {
                 method: "POST",
                 headers: jsonHead,
                 body: JSON.stringify(body)
@@ -91,7 +91,7 @@ const Todos = ({ setAuth }) => {
 
         try {
             // eslint-disable-next-line
-            const res = await fetch("http://localhost:5000/todos/card", {
+            const res = await fetch("/todos/card", {
                 method: "DELETE",
                 headers: jsonHead,
                 body: JSON.stringify(body)
@@ -120,7 +120,7 @@ const Todos = ({ setAuth }) => {
         const body = {todoName, cardId};
 
         try {
-            const res = await fetch("http://localhost:5000/todos/todo", {
+            const res = await fetch("/todos/todo", {
                 method: "POST",
                 headers: jsonHead,
                 body: JSON.stringify(body)
@@ -157,7 +157,7 @@ const Todos = ({ setAuth }) => {
         const body = { cardId, todoId };
         try {
             // eslint-disable-next-line
-            const res = await fetch("http://localhost:5000/todos/todo", {
+            const res = await fetch("/todos/todo", {
                 method: "DELETE",
                 headers: jsonHead,
                 body: JSON.stringify(body)

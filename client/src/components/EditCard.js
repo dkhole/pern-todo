@@ -13,7 +13,7 @@ const EditCard = ({ allCards, setAllCards, card }) => {
             jsonHead.append('Content-type', 'application/json');
             jsonHead.append('token', localStorage.token);
 
-            await fetch(`http://localhost:5000/todos/card/${card.card_id}`, {
+            await fetch(`/todos/card/${card.card_id}`, {
                 method: "PUT",
                 headers: jsonHead,
                 body: JSON.stringify(body)

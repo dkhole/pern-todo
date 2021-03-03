@@ -23,7 +23,7 @@ const EditTodo = ({ setMainCard, allCards, setAllCards, todo }) => {
             jsonHead.append('Content-type', 'application/json');
             jsonHead.append('token', localStorage.token);
 
-            await fetch(`http://localhost:5000/todos/todo/${todo.todo_id}`, {
+            await fetch(`/todos/todo/${todo.todo_id}`, {
                 method: "PUT",
                 headers: jsonHead,
                 body: JSON.stringify(body)
