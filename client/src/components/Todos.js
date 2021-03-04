@@ -15,6 +15,7 @@ const Todos = ({ setAuth }) => {
 
     const fetchData = async() => {
         try {
+            console.log(localStorage);
             const res = await fetch("/todos", {
                 method: "GET",
                 headers: { token: localStorage.token}

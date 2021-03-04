@@ -32,7 +32,6 @@ const Login = ({ setAuth }) => {
             }
             
             const parseRes = await response.json();
-
             //have to save jwt token to local storage
             localStorage.setItem('token', parseRes.token);
             setAuth(true);

@@ -7,7 +7,7 @@ import Register from './components/Register';
 import Todos from './components/Todos';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState();
 
   const setAuth = boolean => {
     setIsAuthenticated(boolean);
