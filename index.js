@@ -15,10 +15,10 @@ if(process.env.NODE_ENV === "production") {
 }
 
 //register and login routes
-app.use("/auth", require("./routes/handleUser.js"));
+app.use("/api/auth", require("./routes/handleUser.js"));
 
 //todo routes
-app.use("/todos", require("./routes/todos.js"));
+app.use("/api/todos", require("./routes/todos.js"));
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
