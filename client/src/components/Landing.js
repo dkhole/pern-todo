@@ -6,8 +6,6 @@ const Landing = () => {
 
   return (
       <div class="wrapper">
-        <div class="auroral-northern"></div>
-        <div class="auroral-stars"></div>
         <div id="title">TODO LIST</div>
         <div id="link-wrap">
           <Link id="register" to="/register">Register</Link>
