@@ -15,7 +15,7 @@ const Todos = ({ setAuth }) => {
 
     const fetchData = async() => {
         try {
-            console.log(localStorage);
+
             const res = await fetch("/api/todos", {
                 method: "GET",
                 headers: { token: localStorage.token}
@@ -222,6 +222,7 @@ const Todos = ({ setAuth }) => {
                             { 
                                 mainCard.todos.map( todo => {
                                     const priorCol = getColor(todo.todo_priority);
+                                    console.log(todo.todo_priority);
                                     return (
                                         <div className="todo" id={todo.todo_id} key={todo.todo_id}>
                                             <div className='todo-prior'>

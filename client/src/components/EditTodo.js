@@ -2,8 +2,8 @@ import { React, Fragment, useState } from 'react';
 import {ReactComponent as Edit} from '../imgs/edit.svg';
 
 const EditTodo = ({ setMainCard, allCards, setAllCards, todo }) => {
-    const [title, setTitle] = useState('');
-    const [priority, setPriority] = useState(0);
+    const [title, setTitle] = useState(todo.todo_title);
+    const [priority, setPriority] = useState(todo.todo_priority);
 
     const date = new Date();
     let inpDate  = '';
@@ -37,7 +37,7 @@ const EditTodo = ({ setMainCard, allCards, setAllCards, todo }) => {
             const todoIndex = allCards[cardIndex].todos.findIndex(t => t.todo_id === todo.todo_id);
 
             //create new todo
-            const newTodo = { ...allCards[cardIndex].todos[todoIndex], todo_title: title, todo_priority: priority, todo_due: dueDate }
+            const newTodo = { ...allCards[cardIndex].todos[todoIndex], todo_title: title, todo_priority: parseInt(priority), todo_due: dueDate }
 
             //create updated todo list
             const temp = [ ...allCards[cardIndex].todos ];
@@ -55,8 +55,9 @@ const EditTodo = ({ setMainCard, allCards, setAllCards, todo }) => {
             
             setMainCard(newCards[cardIndex]);
             setAllCards(newCards);
-            setTitle('');
-            setPriority(0);
+            setTitle(title);
+            setPriority(priority);
+            setDueDate(dueDate);
         } catch (error) {
             console.error(error.message);
         }
