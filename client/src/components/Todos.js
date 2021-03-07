@@ -198,6 +198,7 @@ const Todos = ({ setAuth }) => {
     }
 
     const getColor = (todoPriority) => {
+        //eslint-disable-next-line
         switch (todoPriority) {
             case 0: 
                 return 'prior low';
